@@ -6,13 +6,16 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
     </head>
 
-    <body>
+    <body bgcolor="#e0f2f1">
     <div class="page-header">
+
+    
         <img src="{% static 'images/img1.jpg' %}" width="150" height="200">
         {% if user.is_authenticated %}
-    <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+    <a href="{% url 'post_new' %}"><img src="https://free-png.ru/wp-content/uploads/2021/06/free-png.ru-56-700x635.png" width="50" height="50" align="right"></a>
         {% endif %}
         <h1><a href="/">Django World Blog</a></h1>
     </div>
@@ -24,6 +27,7 @@
             </div>
         </div>
     </div>
+     <div style="background-color:#ee98fb; text-align: center;">&copy; Иванов Иван, 2022 </div>
     </body>
 
 </html>

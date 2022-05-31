@@ -5,16 +5,25 @@ from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
 from .forms import CommentForm
 from django.shortcuts import redirect
+from taggit.models import Tag
 
-def post_list(request):
+def post_list(request, tag_slug=None):
+
+    
+    
+
+    if tag_slug:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+        object_list = object_list.filter(tags__in=[tag])
+
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'blog/post_list.html', {'posts': posts})
+    tag = None
+    
+    return render(request, 'blog/post_list.html', {'posts': posts, 'tag': tag})
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
-
-    
 
 def post_new(request):
     if request.method == "POST":
